@@ -13,4 +13,8 @@ class WelcomeController < ApplicationController
 
   def pricing
   end
+  
+  def features
+  end
+  
 end
