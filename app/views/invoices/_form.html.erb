@@ -1,4 +1,6 @@
-<%= form_for(@invoice) do |f| %>
+<div class="form-group">
+
+<%= form_for @invoice, html: { class: "col-md-6 col-md-offset-2"} do |f| %>
   <% if @invoice.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@invoice.errors.count, "error") %> prohibited this invoice from being saved:</h2>
@@ -11,23 +13,38 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :date %><br>
-    <%= f.datetime_select :date %>
-  </div>
-  <div class="field">
-    <%= f.label :company %><br>
-    <%= f.text_field :company %>
-  </div>
-  <div class="field">
-    <%= f.label :tax %><br>
-    <%= f.text_field :tax %>
-  </div>
-  <div class="field">
-    <%= f.label :salesperson %><br>
-    <%= f.text_field :salesperson %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+	  			<div class="form-group">
+			    	<%= f.label :date, class: 'control-label' %><br>
+					<div class="controls">
+				   	 	<%= f.date_select :date %>
+					</div>
+				 </div>
+				 <div class="form-group">
+				    <%= f.label :company, class: 'control-label' %><br>
+					<div class="controls">
+				    	<%= f.text_field :company %>
+					</div>
+				  </div>
+				  <div class="form-group">
+				    <%= f.label :tax, class: 'control-label' %><br>
+					<div class="controls">
+				    	<%= f.text_field :tax %>
+					</div>
+				  </div>
+				  <div class="form-group">
+				    <%= f.label :salesperson, class: 'control-label' %><br>
+					<div class="controls">
+				    	<%= f.text_field :salesperson %>
+					</div>
+				  </div>
+				  <div class="form-group">
+					<div class="controls">
+				    	<%= f.submit "Submit", class: 'btn btn-info' %>
+					</div>
+				  </div>
+
+
+
+</div>
+
 <% end %>
