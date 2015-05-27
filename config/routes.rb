@@ -21,6 +21,10 @@ Rails.application.routes.draw do
 
   resources :invoices
 
+  resources :companies do 
+    collection { post :import}
+  end  
+  
 
   root to: 'welcome#index'
 
