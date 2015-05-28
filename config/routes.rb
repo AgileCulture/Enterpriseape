@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
   
 
+  resources :purchases
+
   resources :employees
 
   devise_for :users
