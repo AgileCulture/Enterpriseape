@@ -1,5 +1,6 @@
-class PurchasesController < ApplicationController
-  before_action :set_purchase, only: [:show, :edit, :update, :destroy]
+class Invoices::PurchasesController < ApplicationController
+# In Lecture 31 about 1.31 it says to get rid of this before_action. Instead I'm commenting it out because I don't ye know why I can or should get rid of it
+#  before_action :set_purchase, only: [:show, :edit, :update, :destroy]
 
   # GET /purchases
   # GET /purchases.json
@@ -14,6 +15,7 @@ class PurchasesController < ApplicationController
 
   # GET /purchases/new
   def new
+    @invoice = Invoice.find(params[:invoice_id])
     @purchase = Purchase.new
   end
 
@@ -24,15 +26,17 @@ class PurchasesController < ApplicationController
   # POST /purchases
   # POST /purchases.json
   def create
+    @invoice = Invoice.find(params[:invoice_id])
     @purchase = Purchase.new(purchase_params)
+    @purchase.invoice = @invoice
 
     respond_to do |format|
       if @purchase.save
-        format.html { redirect_to @purchase, notice: 'Purchase was successfully created.' }
-        format.json { render :show, status: :created, location: @purchase }
+        format.html { redirect_to @invoice, notice: 'Purchase was successfully created.' }
+        format.json { render :show, status: :created, location: @pinvoice }
       else
         format.html { render :new }
-        format.json { render json: @purchase.errors, status: :unprocessable_entity }
+        format.json { render json: @invoice.errors, status: :unprocessable_entity }
       end
     end
   end
